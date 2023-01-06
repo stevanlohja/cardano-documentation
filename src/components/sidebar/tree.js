@@ -19,6 +19,7 @@ const calculateTreeData = edges => {
       accu,
       {
         node: {
+          frontmatter: { externalUrl },
           fields: { slug, title },
         },
       },
@@ -64,6 +65,7 @@ const calculateTreeData = edges => {
           url: slug,
           items: [],
           title,
+          externalUrl,
         })
       }
 
@@ -169,34 +171,41 @@ const Tree = ({ edges }) => {
 
   const defaultCollapsed = {}
 
+  // NOTE: Following two functions edited to always collapse all inner and outer URL's
+
   const matchInnerUrl = (collapsedItems, navItem) => {
     navItem.map(item => {
       let matchUrl = stripNumbers(item.url)
 
-      collapsedItems.map(a => {
+      /* collapsedItems.map(a => {
         if (a === matchUrl) {
           defaultCollapsed[matchUrl] = true
         }
-      })
+      }) */
+
+      defaultCollapsed[matchUrl] = true
 
       item.items &&
         item.items.map(i => {
           let innerMatchUrl = stripNumbers(i.url)
 
-          collapsedItems.map(b => {
+          /* collapsedItems.map(b => {
             if (b === innerMatchUrl) {
               defaultCollapsed[innerMatchUrl] = true
             }
-          })
+          }) */
+
+          defaultCollapsed[innerMatchUrl] = true
 
           i.items &&
             i.items.map(x => {
               let innerInnerMatchUrl = stripNumbers(x.url)
 
               collapsedItems.map(c => {
-                if (c === innerInnerMatchUrl) {
+                /*if (c === innerInnerMatchUrl) {
                   defaultCollapsed[innerInnerMatchUrl] = true
-                }
+                }*/
+                defaultCollapsed[innerInnerMatchUrl] = true
               })
             })
         })
@@ -205,11 +214,14 @@ const Tree = ({ edges }) => {
 
   const matchOuterUrl = (collapsedItems, url) => {
     url = stripNumbers(url)
-    collapsedItems.map(i => {
+
+    /*collapsedItems.map(i => {
       if (i === url) {
         defaultCollapsed[url] = true
       }
-    })
+    })*/
+
+    defaultCollapsed[url] = true
   }
 
   treeData.items.forEach(item => {
@@ -234,22 +246,33 @@ const Tree = ({ edges }) => {
   // The curent items parent should never be collapsed - this works when navigating prev/next and when accessing
   // a url directly.
   useEffect(() => {
+    /**
+     * expand sections depending the current URL
+     * accumulate this in an object so that we update state only once
+     * @type {Partial<typeof collapsed>}
+     */
+    let patchCollapsed = {};
+
     // Recursive function to loop through all levels of tree because we don't know how deep the tree might get
     const processItems = items =>
       items.forEach(item => {
         const strippedUrl = stripNumbers(item.url)
 
-        if (currentUrl.includes(strippedUrl) && currentUrl !== strippedUrl)
-          setCollapsed({
-            ...collapsed,
-            [strippedUrl]: false,
-          })
+        if (currentUrl.startsWith(strippedUrl) && currentUrl !== strippedUrl) {
+          patchCollapsed[strippedUrl] = false
+        }
 
         // Call function recursively if it has children
         if (item.items?.length) processItems(item.items)
       })
 
     processItems(treeData.items)
+
+    /* use function form to patch current state (not the initial state) */
+    setCollapsed(collapsed => ({
+      ...collapsed,
+      ...patchCollapsed,
+    }));
   }, [currentUrl])
 
   const toggle = url => {

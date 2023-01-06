@@ -40,7 +40,20 @@ _Past performance is not indicative of future results. Any investment in blockch
         },
         {
           label: 'Cardano Foundation Twitter',
-          href: 'https://twitter.com/cardanostiftung',
+          href: 'https://twitter.com/Cardano_CF',
+        },
+      ],
+    },
+    legalLinks: {
+      title: 'Legal',
+      links: [
+        {
+          label: 'IOHK Privacy Policy',
+          href: 'https://static.iohk.io/terms/iog-privacy-policy.pdf',
+        },
+        {
+          label: 'IOHK Terms & Conditions',
+          href: 'https://static.iohk.io/terms/iohktermsandconditions.pdf',
         },
       ],
     },

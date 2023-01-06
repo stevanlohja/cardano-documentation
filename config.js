@@ -28,7 +28,7 @@ const config = {
 		  </li>`,
     links: [{ text: '', link: '' }],
     search: {
-      enabled: true,
+      enabled: false,
       indexName: 'cardano',
       algoliaApiKey: process.env.GATSBY_ALGOLIA_API_KEY,
     },
@@ -55,7 +55,11 @@ const config = {
       '/community',
       '/tools',
     ],
-    links: [{ text: 'Cardano.org', link: 'https://cardano.org' }],
+    links: [
+      { text: 'Glossary', link: 'https://www.essentialcardano.io/glossary?sort=alphabetical' },
+      { text: 'Cardano.org', link: 'https://cardano.org' },
+      { text: 'Developer Portal', link: 'https://developers.cardano.org/' },
+    ],
     frontLine: true, // This toggles collapse arrows
     ignoreIndex: true,
     title:
@@ -66,7 +70,7 @@ const config = {
     description: 'Documentation for the Cardano ecosystem ',
     ogImage: null,
     docsLocation:
-      'https://github.com/input-output-hk/cardano-documentation/tree/staging/content',
+      'https://github.com/input-output-hk/cardano-documentation/tree/master/content',
     favicon: 'pwa-512.png',
   },
   pwa: {

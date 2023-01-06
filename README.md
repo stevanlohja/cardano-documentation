@@ -1,21 +1,22 @@
 # Cardano Documentation
 
-<p align="left">
+<p align="center">
   <img width='150px' src="https://ucarecdn.com/6a470caf-060b-4c44-982e-f9bde302ed6e/CardanoRGB_LogoStackBlue.png" alt='Cardano Logo' />
 </p>
 
-Welcome to the central hub for Cardano documentation, here you will find content
+ <p align="center">
+    Welcome to the central hub for Cardano documentation
+    <br />
+     </p>
+
+Here you will find content
 that describes and supports the components and features that are live on Cardano
-mainnet. If you notice any areas of this documentation that could be improved,
-please open a new issue or feel free to submit a pull request with your
-propeosed changes.
+mainnet and Cardano testnets. If you notice any areas of this documentation that could be improved,
+please feel free to submit a pull request with your
+proposed changes.
 
-The website for Cardano Documentation is hosted at
-[docs.cardano.org](https://docs.cardano.org).
-
-If you are interested in developing on Cardano, experimenting with the Cardano
-testnet, or other test development environments, please visit
-[Cardano Developers](https://developers.cardano.org/).
+If you are interested in developing on Cardano, please visit
+[Cardano Developer Portal](https://developers.cardano.org/).
 
 ## Cardano explained
 
@@ -41,9 +42,9 @@ powerful methods for ensuring correctness of the code, such as basing the
 implementation on formal and executable specifications, extensive property-based
 testing, and running tests in simulation.
 
-Cardano is developing a smart contract platform which seeks to deliver more
-advanced features than any protocol previously developed and will serve as a
-stable and secure platform for the development of enterprise-level dApps. In the
+Cardano is a smart contract platform which seeks to deliver more
+advanced features than any protocol previously developed and serves as a
+stable and secure platform for the development of enterprise-level DApps. In the
 near future, Cardano will use a democratic governance system that allows the
 project to evolve over time, and fund itself in a sustainable way through a
 visionary treasury system.
@@ -51,13 +52,10 @@ visionary treasury system.
 You can read more about Cardano on the
 [official Cardano website](http://cardano.org/) and watch a summary of the
 mission of Cardano in this
-[explainer video](https://www.youtube.com/watch?v=l_Nv0-PVrnM). If you are
-looking for a user-friendly wallet for Cardano, please take a look at
-[Daedalus](https://daedaluswallet.io) for a desktop wallet or
-[Yoroi](https://yoroi-wallet.com) for a mobile wallet.
+[explainer video](https://www.youtube.com/watch?v=l_Nv0-PVrnM).
 
 ## Creating PRs and suggesting changes to this repository
 
-If you would like to suggest an improvement to this documentation please create
-an issue or checkout a feature branch with with your changes and then create a
-pull request into the `staging` branch.
+To suggest an improvement to this repository please create
+an issue or checkout a feature branch with your changes and then create a
+pull request into the `master` branch.
